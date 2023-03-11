@@ -1,4 +1,3 @@
-# Import pandas and matplotlib.pyplot libraries
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
