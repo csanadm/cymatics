@@ -11,7 +11,7 @@ def linear_regression_calc(xvector, yvector):
   SS_yy = np.sum(yvector*yvector) - npoints*mean_y*mean_y
   SS_xy = np.sum(yvector*xvector) - npoints*mean_x*mean_y
   SS_xx = np.sum(xvector*xvector) - npoints*mean_x*mean_x
-  if(SS_xx==0 or SS_yy==0 or npoints<=1): return (mean_y, 0, -0.999) #No meaningful r-value, don't care about b0 and b1 either
+  if(SS_xx==0 or SS_yy==0 or npoints<=2): return (mean_y, 0, -0.999) #No meaningful r-value, don't care about b0 and b1 either
   b1 = SS_xy/SS_xx
   b0 = mean_y - b1*mean_x
   resvector = yvector - b0 - b1*xvector
