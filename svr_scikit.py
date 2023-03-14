@@ -23,7 +23,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random
 # degree: polynomial degree for 'poly'
 # coef0: constant term influence on decision boundary, 'poly' and 'sigmoid'
 #param_grid = {'C': [0.1, 1, 10, 100], 'gamma': [0.01, 0.1, 1], 'epsilon': [0.01, 0.1, 0.5], 'degree': [2, 3, 4], 'coef0': [0.0, 1.0]}
-param_grid = {'C': [1, 10, 100], 'gamma': [0.01, 0.1, 1.0], 'epsilon': [0.01, 0.1, 0.5], 'degree': [3], 'coef0': [1.0]}
+param_grid = {'C': [1, 10, 100], 'gamma': [0.01, 0.1, 1.0], 'epsilon': [0.01, 0.1, 0.5], 'degree': [2], 'coef0': [1.0]}
 
 # Fit regression models
 #svr_poly = SVR(kernel='poly', C=100, gamma='auto', degree=3, epsilon=.1, coef0=1)
