@@ -7,4 +7,4 @@ In this cymatics project library resonance patterns are analyzed versius various
 - <a href="https://github.com/csanadm/cymatics/blob/main/svr_scikit.py">svr_scikit.py</a>: perform Support Vector Regression with `scikit-learn`.
 
 Here is an example output (omitting polynomial regression):
-![svr_scikit](https://user-images.githubusercontent.com/38218165/225112322-abf6c650-219e-4336-a6a8-5fe63fe1a951.png)
+![svr_scikit](https://user-images.githubusercontent.com/38218165/225572229-496f2b5a-cd59-49ed-859b-f907a83b351b.png)
