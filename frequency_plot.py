@@ -21,57 +21,73 @@ def linear_regression_calc(xvector, yvector):
 
 df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
 
-columns = df.columns
-print(columns)
+plt.figure()
+plt.xlabel("Frequency [Hz]")
+plt.ylabel("Symmetry-fold")
+plt.title("Symmetry-fold vs frequency")
+xvector = df["Frequency [Hz]"]
+yvector = df["Symm1"]
+plt.plot(xvector, yvector, marker=markers[0], linestyle='None', label='')
+plt.savefig("symmetryfold_vs_frequency.png")
+
+
+#columns = df.columns
+#print(columns)
 mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination", "V1Min", "V1Max"]
 Ncolumns = len(mycolumns)
 
-frequencies = df["Frequency [Hz]"].unique()
-Nfreqs = len(frequencies)
-
-rvalues = np.zeros([Ncolumns,Nfreqs])
+Nmaxvals = 10
+for field in mycolumns:
+  uniquevalues = df[field].unique()
+  Nvals = len(uniquevalues)
+  if(Nvals>Nmaxvals): Nmaxvals = Nvals
+print("Maximum number of values: " + str(Nmaxvals))
+rvalues = np.zeros([Ncolumns,Nmaxvals])
 
 ifield = 0
 for field in mycolumns:
   plt.figure()
-  ifreq = 0
-  print("Working on " + field + " versus frequency...")
-  for f in frequencies:
-    df_filtered = df[df["Frequency [Hz]"]==f]
-    xvector = df_filtered[field]
+  plt.xlabel("Frequency [Hz]")
+  plt.ylabel("Symmetry-fold")
+  print("Working on " + field + "...")
+  uniquevalues = df[field].unique()
+  ival = 0
+  Nvals = len(uniquevalues)
+  print(str(Nvals) + " unique values for " + field)
+  if(Nvals>Nmaxvals): Nmaxvals = Nvals
+  for val in uniquevalues:
+    df_filtered = df[df[field]==val]
+    xvector = df_filtered["Frequency [Hz]"]
     yvector = df_filtered["Symm1"]
-    plt.plot(xvector, yvector, marker=markers[ifreq % len(markers)], linestyle='None', label='f='+str(f)+' Hz')
+    plt.plot(xvector, yvector, marker=markers[ival % len(markers)], linestyle='None', label=field+' = '+str(val))
     linregrpars = linear_regression_calc(xvector,yvector)
-    #print("f = " + str(f) + " Hz -> " + "{:.3f}".format(linregrpars[2]))
-    rvalues[ifield][ifreq] = linregrpars[2]
-    ifreq += 1
+    rvalues[ifield][ival] = linregrpars[2]
+    ival += 1
   plt.legend()
-  plt.xlabel(field)
   shortfield = field.split(' ')[0]
   titlefield = shortfield
   if(len(field.split(' '))>2):
     titlefield += " " + field.split(' ')[1]
     shortfield += "_" + field.split(' ')[1]
     shortfield = shortfield.replace('.','')
-  plt.ylabel("Symmetry-fold")
-  plt.title("Symmetry-fold vs " + titlefield + " and Frequency")
+  plt.title("Symmetry-fold vs frequency for various " + titlefield + " values")
   ax = plt.subplot(111)
   box = ax.get_position()
-  ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
+  ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.70,box.height*1.06])
   ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-  plt.savefig(shortfield + ".png")
+  plt.savefig(shortfield + "_vs_frequency.png")
   ifield += 1
 
 plt.figure()
-plt.title("Regression r-value versus frequency")
-plt.xlabel("Frequency [Hz]")
+plt.title("Regression r-value for various parameters")
+plt.xlabel("Parameter value [#]")
 plt.ylim(0,1.05)
 for ifield in range(Ncolumns):
-  plt.plot(frequencies, rvalues[ifield, :], marker=markers[ifield % len(markers)], linestyle='None', label=mycolumns[ifield])
+  plt.plot(range(0,Nmaxvals), rvalues[ifield, :], marker=markers[ifield % len(markers)], linestyle='None', label=mycolumns[ifield])
 ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.05,box.y0,box.width*1.10,box.height*1.06])
 ax.legend(loc='center left', bbox_to_anchor=(0.65, 0.8))
-plt.savefig("rvalues.png")
+plt.savefig("rvalues_vs_ivalue.png")
 
 #plt.show()
