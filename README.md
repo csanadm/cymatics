@@ -12,7 +12,7 @@ Here is an example output for the SVR code:
 ![svr_scikit](https://user-images.githubusercontent.com/38218165/225572229-496f2b5a-cd59-49ed-859b-f907a83b351b.png)
 
 Here is an amplitude vs frequency plot:
-![amplitude_vs_frequency](https://user-images.githubusercontent.com/38218165/226633584-140a9453-701e-43c8-b66d-0e3a9e493c3e.png)
+![amplitude_vs_frequency](https://user-images.githubusercontent.com/38218165/226888055-16ab1f54-60d7-4bf5-9ea5-c37bb161b0e8.png)
 
 And the amplitudes vs frequency, grouped by symmetryfold:
 ![V1min_vs_frequency_by_symm](https://user-images.githubusercontent.com/38218165/226633683-6bf20da3-9bf8-4ac3-8422-e44c51e07c87.png)
