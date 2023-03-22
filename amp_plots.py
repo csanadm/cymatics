@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 import numpy as np
 
 markers = ["o", "*", "x", "+", "s", "d", "|", "1", "2"] #, "_"] #NOT 10 MARKES AS THERE ARE ALSO 10 COLORS
@@ -13,19 +14,20 @@ plt.title("Amplitude vs frequency")
 xvector = df["Frequency [Hz]"].to_numpy()
 yminvec = df["V1Min"].to_numpy()
 ymaxvec = df["V1Max"].to_numpy()
+#ymaxvec = np.nan_to_num(ymaxvec, nan=-999)
+nan_mask = np.isnan(ymaxvec)
+ymaxvec[nan_mask] = yminvec[nan_mask]
 
-#xvector = np.array([1, 2, 3, 4, 5])
-#yminvec = np.array([0.5, 1.0, 1.5, 2.0, 2.5])
-#ymaxvec = np.array([1.0, 1.5, 2.0, 2.5, 3.0])
-
-print(f"X values: {len(xvector)}, Ymins: {len(yminvec)}, Xmaxs: {len(ymaxvec)}")
-print(xvector.shape)
-print(yminvec.shape)
-print(ymaxvec.shape)
 #plt.boxplot([yminvec, ymaxvec], positions=xvector, widths=0.5, showfliers=False)
 
+#plt.plot(xvector, yminvec, marker="_", linestyle='None', label="")
+#plt.plot(xvector, ymaxvec, marker="_", linestyle='None', label="")
+plt.xlim(xvector.min()-10, xvector.max()+10)
+plt.ylim(yminvec.min()-0.1, ymaxvec.max()+0.1)
+
 for ipoint in range(len(xvector)):
-    plt.vlines(xvector[ipoint], yminvec[ipoint], ymaxvec[ipoint], colors='r', linewidth=4)
+    #plt.vlines(xvector[ipoint], yminvec[ipoint], ymaxvec[ipoint], colors='r', linewidth=4)
+    plt.gca().add_patch(Rectangle((xvector[ipoint]-1,yminvec[ipoint]), 2, ymaxvec[ipoint]-yminvec[ipoint], linewidth=1, edgecolor='r', facecolor='none'))
 plt.savefig("amplitude_vs_frequency.png")
 
 Symm1vals = sorted(df["Symm1"].unique())
