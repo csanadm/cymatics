@@ -11,23 +11,39 @@ plt.figure()
 plt.xlabel("Frequency [Hz]")
 plt.ylabel("Amplitude")
 plt.title("Amplitude vs frequency")
+plt.xlim(40,230)
+plt.ylim(0.1,4.5)
+
 xvector = df["Frequency [Hz]"].to_numpy()
-yminvec = df["V1Min"].to_numpy()
-ymaxvec = df["V1Max"].to_numpy()
-#ymaxvec = np.nan_to_num(ymaxvec, nan=-999)
-nan_mask = np.isnan(ymaxvec)
-ymaxvec[nan_mask] = yminvec[nan_mask]
 
-#plt.boxplot([yminvec, ymaxvec], positions=xvector, widths=0.5, showfliers=False)
+yminvec1 = df["V1Min"].to_numpy()
+ymaxvec1 = df["V1Max"].to_numpy()
+nan_mask1 = np.isnan(ymaxvec1) # OTHER POSSIBILITY: ymaxvec = np.nan_to_num(ymaxvec, nan=-999)
+ymaxvec1[nan_mask1] = yminvec1[nan_mask1] # REPLACE MAX WITH MIN IF MAX=NAN
 
-#plt.plot(xvector, yminvec, marker="_", linestyle='None', label="")
-#plt.plot(xvector, ymaxvec, marker="_", linestyle='None', label="")
-plt.xlim(xvector.min()-10, xvector.max()+10)
-plt.ylim(yminvec.min()-0.1, ymaxvec.max()+0.1)
+yminvec2 = df["V2Min"].to_numpy()
+ymaxvec2 = df["V2Max"].to_numpy()
+nan_mask2 = np.isnan(ymaxvec2)
+ymaxvec2[nan_mask2] = yminvec2[nan_mask2]
+
+yminvec3 = df["V3Min"].to_numpy()
+ymaxvec3 = df["V3Max"].to_numpy()
+nan_mask3 = np.isnan(ymaxvec3)
+ymaxvec3[nan_mask3] = yminvec3[nan_mask3]
 
 for ipoint in range(len(xvector)):
-    #plt.vlines(xvector[ipoint], yminvec[ipoint], ymaxvec[ipoint], colors='r', linewidth=4)
-    plt.gca().add_patch(Rectangle((xvector[ipoint]-1,yminvec[ipoint]), 2, ymaxvec[ipoint]-yminvec[ipoint], linewidth=1, edgecolor='r', facecolor='none'))
+  #plt.vlines(xvector[ipoint], yminvec[ipoint], ymaxvec[ipoint], colors='r', linewidth=4)
+  if(not np.isnan(yminvec1[ipoint])): plt.gca().add_patch(Rectangle((xvector[ipoint]-1,yminvec1[ipoint]), 2, ymaxvec1[ipoint]-yminvec1[ipoint], linewidth=1, edgecolor='r', facecolor='none'))
+  if(not np.isnan(yminvec2[ipoint])): plt.gca().add_patch(Rectangle((xvector[ipoint]-1,yminvec2[ipoint]), 2, ymaxvec2[ipoint]-yminvec2[ipoint], linewidth=1, edgecolor='g', facecolor='none'))
+  if(not np.isnan(yminvec3[ipoint])): plt.gca().add_patch(Rectangle((xvector[ipoint]-1,yminvec3[ipoint]), 2, ymaxvec3[ipoint]-yminvec3[ipoint], linewidth=1, edgecolor='b', facecolor='none'))
+
+plt.gca().add_patch(Rectangle((55,3.5), 2, 0.2, linewidth=1, edgecolor='r', facecolor='none'))
+plt.gca().add_patch(Rectangle((55,3.2), 2, 0.2, linewidth=1, edgecolor='g', facecolor='none'))
+plt.gca().add_patch(Rectangle((55,2.9), 2, 0.2, linewidth=1, edgecolor='b', facecolor='none'))
+plt.text(60, 3.55, 'V1 range')
+plt.text(60, 3.25, 'V2 range')
+plt.text(60, 2.95, 'V3 range')
+
 plt.savefig("amplitude_vs_frequency.png")
 
 Symm1vals = sorted(df["Symm1"].unique())
