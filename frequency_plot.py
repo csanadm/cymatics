@@ -33,7 +33,7 @@ plt.savefig("symmetryfold_vs_frequency.png")
 
 #columns = df.columns
 #print(columns)
-mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination", "V1Min", "V1Max"]
+mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination", "V1Min", "V1Max", "V2Min", "V2Max", "V3Min", "V3Max"]
 Ncolumns = len(mycolumns)
 
 Nmaxvals = 10
