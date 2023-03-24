@@ -5,7 +5,7 @@ from lmfit import minimize, Parameters, Parameter, fit_report, report_fit
 
 def mychi2fun(params, df, columns):
     values = np.array(list(params.valuesdict().values()))
-    residuals = df.apply(lambda row: (np.dot(values, row[columns]) - row['Symm1'])**2, axis=1)
+    residuals = df.apply(lambda row: (np.dot(values, np.nan_to_num(row[columns],nan=0)) - row['Symm1'])**2, axis=1)
     return residuals
   
 
@@ -13,9 +13,9 @@ df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
 
 #columns = df.columns
 #print(columns)
-yvector = df["Symm1"]
-Nrows = len(yvector)
-mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination"]
+#yvector = df["Symm1"]
+#Nrows = len(yvector)
+mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination", "V1Min", "V1Max", "V2Min", "V2Max", "V3Min", "V3Max"]
 Ncolumns = len(mycolumns)
 
 params = Parameters()
