@@ -38,12 +38,13 @@ for field in mycolumns:
   print("Working on " + field + " versus frequency...")
   for f in frequencies:
     df_filtered = df[df["Frequency [Hz]"]==f]
-    xvector = df_filtered[field]
-    yvector = df_filtered["Symm1"]
+    xvector = df_filtered[field].to_numpy()
+    yvector = df_filtered["Symm1"].to_numpy()
     plt.plot(xvector, yvector, marker=markers[ifreq % len(markers)], linestyle='None', label='f='+str(f)+' Hz')
-    linregrpars = linear_regression_calc(xvector,yvector)
-    #print("f = " + str(f) + " Hz -> " + "{:.3f}".format(linregrpars[2]))
-    rvalues[ifield][ifreq] = linregrpars[2]
+    if(len(xvector[xvector>0])>3):
+      linregrpars = linear_regression_calc(xvector,yvector)
+      #print("f = " + str(f) + " Hz -> " + "{:.3f}".format(linregrpars[2]))
+      rvalues[ifield][ifreq] = linregrpars[2]
     ifreq += 1
   plt.legend()
   plt.xlabel(field)
@@ -59,7 +60,7 @@ for field in mycolumns:
   box = ax.get_position()
   ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
   ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-  plt.savefig(shortfield + ".png")
+  #plt.savefig(shortfield + ".png")
   ifield += 1
 
 plt.figure()
@@ -70,8 +71,8 @@ for ifield in range(Ncolumns):
   plt.plot(frequencies, rvalues[ifield, :], marker=markers[ifield % len(markers)], linestyle='None', label=mycolumns[ifield])
 ax = plt.subplot(111)
 box = ax.get_position()
-ax.set_position([box.x0-box.width*0.05,box.y0,box.width*1.10,box.height*1.06])
-ax.legend(loc='center left', bbox_to_anchor=(0.65, 0.8))
+ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.80,box.height*1.06])
+ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
 plt.savefig("rvalues.png")
 
 #plt.show()
