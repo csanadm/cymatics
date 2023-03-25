@@ -50,6 +50,7 @@ print("Best parameters for polynomial kernel:", grid_poly.best_params_)
 print("Best parameters for sigmoid kernel:", grid_sig.best_params_)
 
 ## Calculate goodness on testing data
+print("Predicting power for test sample")
 
 # Predict on testing data using best parameters
 y_rbf_pred_test = grid_rbf.predict(X_test)
@@ -63,10 +64,10 @@ mse_lin = mean_squared_error(y_test, y_lin_pred_test)
 mse_poly = mean_squared_error(y_test, y_poly_pred_test)
 mse_sig = mean_squared_error(y_test, y_sig_pred_test)
 
-print("MSE for RBF kernel:", mse_rbf)
-print("MSE for linear kernel:", mse_lin)
-print("MSE for polynomial kernel:", mse_poly)
-print("MSE for sigmoid kernel:", mse_sig)
+print("  MSE for RBF kernel:", mse_rbf)
+print("  MSE for linear kernel:", mse_lin)
+print("  MSE for polynomial kernel:", mse_poly)
+print("  MSE for sigmoid kernel:", mse_sig)
 
 # Calculate and print MAE for each model
 mae_rbf = mean_absolute_error(y_test, y_rbf_pred_test)
@@ -74,10 +75,10 @@ mae_lin = mean_absolute_error(y_test, y_lin_pred_test)
 mae_poly = mean_absolute_error(y_test, y_poly_pred_test)
 mae_sig = mean_absolute_error(y_test, y_sig_pred_test)
 
-print("MAE for RBF kernel:", mae_rbf)
-print("MAE for linear kernel:", mae_lin)
-print("MAE for polynomial kernel:", mae_poly)
-print("MAE for sigmoid kernel:", mae_sig)
+print("  MAE for RBF kernel:", mae_rbf)
+print("  MAE for linear kernel:", mae_lin)
+print("  MAE for polynomial kernel:", mae_poly)
+print("  MAE for sigmoid kernel:", mae_sig)
 
 # Calculate and print R^2 score for each model
 r2_rbf = r2_score(y_test, y_rbf_pred_test)
@@ -85,12 +86,13 @@ r2_lin = r2_score(y_test, y_lin_pred_test)
 r2_poly = r2_score(y_test, y_poly_pred_test)
 r2_sig = r2_score(y_test, y_sig_pred_test)
 
-print("R^2 score for RBF kernel:", r2_rbf)
-print("R^2 score for linear kernel:", r2_lin)
-print("R^2 score for polynomial kernel:", r2_poly)
-print("R^2 score for sigmoid kernel:", r2_sig)
+print("  R^2 score for RBF kernel:", r2_rbf)
+print("  R^2 score for linear kernel:", r2_lin)
+print("  R^2 score for polynomial kernel:", r2_poly)
+print("  R^2 score for sigmoid kernel:", r2_sig)
 
 ## Calculate goodness on trainging data
+print("\"Predicting\" power for training sample")
 
 # Predict on testing data using best parameters
 y_rbf_pred_train = grid_rbf.predict(X_train)
@@ -104,10 +106,10 @@ mse_lin = mean_squared_error(y_train, y_lin_pred_train)
 mse_poly = mean_squared_error(y_train, y_poly_pred_train)
 mse_sig = mean_squared_error(y_train, y_sig_pred_train)
 
-print("MSE for RBF kernel:", mse_rbf)
-print("MSE for linear kernel:", mse_lin)
-print("MSE for polynomial kernel:", mse_poly)
-print("MSE for sigmoid kernel:", mse_sig)
+print("  MSE for RBF kernel:", mse_rbf)
+print("  MSE for linear kernel:", mse_lin)
+print("  MSE for polynomial kernel:", mse_poly)
+print("  MSE for sigmoid kernel:", mse_sig)
 
 # Calculate and print MAE for each model
 mae_rbf = mean_absolute_error(y_train, y_rbf_pred_train)
@@ -115,10 +117,10 @@ mae_lin = mean_absolute_error(y_train, y_lin_pred_train)
 mae_poly = mean_absolute_error(y_train, y_poly_pred_train)
 mae_sig = mean_absolute_error(y_train, y_sig_pred_train)
 
-print("MAE for RBF kernel:", mae_rbf)
-print("MAE for linear kernel:", mae_lin)
-print("MAE for polynomial kernel:", mae_poly)
-print("MAE for sigmoid kernel:", mae_sig)
+print("  MAE for RBF kernel:", mae_rbf)
+print("  MAE for linear kernel:", mae_lin)
+print("  MAE for polynomial kernel:", mae_poly)
+print("  MAE for sigmoid kernel:", mae_sig)
 
 # Calculate and print R^2 score for each model
 r2_rbf = r2_score(y_train, y_rbf_pred_train)
@@ -126,10 +128,10 @@ r2_lin = r2_score(y_train, y_lin_pred_train)
 r2_poly = r2_score(y_train, y_poly_pred_train)
 r2_sig = r2_score(y_train, y_sig_pred_train)
 
-print("R^2 score for RBF kernel:", r2_rbf)
-print("R^2 score for linear kernel:", r2_lin)
-print("R^2 score for polynomial kernel:", r2_poly)
-print("R^2 score for sigmoid kernel:", r2_sig)
+print("  R^2 score for RBF kernel:", r2_rbf)
+print("  R^2 score for linear kernel:", r2_lin)
+print("  R^2 score for polynomial kernel:", r2_poly)
+print("  R^2 score for sigmoid kernel:", r2_sig)
 
 # Create scatter plots of actual vs predicted values
 plt.figure(figsize=(10,10))
