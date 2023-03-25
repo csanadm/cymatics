@@ -8,9 +8,9 @@ In this cymatics project library resonance patterns are analyzed versius various
 - <a href="https://github.com/csanadm/cymatics/blob/main/frequency_plot.py">frequency_plot.py</a>: Plot symmetry-fold vs frequency in various groupings.
 - <a href="https://github.com/csanadm/cymatics/blob/main/amp_plots.py">amp_plots.py</a>: Plot amplitudes vs frequency in various groupings.
 
-Here is an example plot for the linear fit:
+Here is an example plot for the linear fit (lmfit and scikit/sklearn):
 
-![fit_residuals](https://user-images.githubusercontent.com/38218165/227724923-651c4013-a6cc-49ba-a7bf-9f7509f97b6b.png)
+<img alt="fit_residuals" src="https://user-images.githubusercontent.com/38218165/227724923-651c4013-a6cc-49ba-a7bf-9f7509f97b6b.png" width="500" /> <img alt="ML_fit_residuals" src="https://user-images.githubusercontent.com/38218165/227725653-0244b946-21af-45bd-81a8-a5a53514adf4.png" width="500" />
 
 Here is an example output for the SVR code:
 
