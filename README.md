@@ -8,6 +8,10 @@ In this cymatics project library resonance patterns are analyzed versius various
 - <a href="https://github.com/csanadm/cymatics/blob/main/frequency_plot.py">frequency_plot.py</a>: Plot symmetry-fold vs frequency in various groupings.
 - <a href="https://github.com/csanadm/cymatics/blob/main/amp_plots.py">amp_plots.py</a>: Plot amplitudes vs frequency in various groupings.
 
+Here is an example plot for the linear fit:
+
+![fit_residuals](https://user-images.githubusercontent.com/38218165/227724923-651c4013-a6cc-49ba-a7bf-9f7509f97b6b.png)
+
 Here is an example output for the SVR code:
 
 ![svr_scikit](https://user-images.githubusercontent.com/38218165/225572229-496f2b5a-cd59-49ed-859b-f907a83b351b.png)
@@ -17,7 +21,6 @@ Here is an amplitude vs frequency plot, showing boxes from amplitude minimum to 
 ![amplitude_vs_frequency](https://user-images.githubusercontent.com/38218165/227138238-6a8ba41e-3ca7-4b22-b6bb-887d5983582b.png)
 
 And the amplitudes vs frequency, grouped by symmetryfold:
-
 
 ![V1min_vs_frequency_by_symm](https://user-images.githubusercontent.com/38218165/226633683-6bf20da3-9bf8-4ac3-8422-e44c51e07c87.png)
 ![V1Max_vs_frequency_by_symm](https://user-images.githubusercontent.com/38218165/226633674-ce7b1f56-1a13-4283-b80b-3cb1a044974a.png)
