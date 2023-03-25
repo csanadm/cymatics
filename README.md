@@ -10,16 +10,16 @@ In this cymatics project library resonance patterns are analyzed versius various
 
 Here is an example plot for the linear fit (lmfit and scikit/sklearn):
 
-<img alt="fit_residuals" src="https://user-images.githubusercontent.com/38218165/227724923-651c4013-a6cc-49ba-a7bf-9f7509f97b6b.png" width="500" /> <img alt="ML_fit_residuals" src="https://user-images.githubusercontent.com/38218165/227726975-b2a0ca6d-c78b-4fac-83dc-a0323db4f3ef.png" width="500" />
+<img alt="fit_residuals" src="https://user-images.githubusercontent.com/38218165/227724923-651c4013-a6cc-49ba-a7bf-9f7509f97b6b.png" width="350" /> <img alt="ML_fit_residuals" src="https://user-images.githubusercontent.com/38218165/227726975-b2a0ca6d-c78b-4fac-83dc-a0323db4f3ef.png" width="350" />
 
 Here is an example output for the SVR code:
 
-![svr_scikit](https://user-images.githubusercontent.com/38218165/225572229-496f2b5a-cd59-49ed-859b-f907a83b351b.png)
+<img alt="svr_scikit" src="https://user-images.githubusercontent.com/38218165/225572229-496f2b5a-cd59-49ed-859b-f907a83b351b.png" width="700" />
 
 Here is an amplitude vs frequency plot, showing boxes from amplitude minimum to amplitude maximum, at each frequency:
 
-<img alt="amplitude_vs_frequency" src="https://user-images.githubusercontent.com/38218165/227138238-6a8ba41e-3ca7-4b22-b6bb-887d5983582b.png" width="500" />
+<img alt="amplitude_vs_frequency" src="https://user-images.githubusercontent.com/38218165/227138238-6a8ba41e-3ca7-4b22-b6bb-887d5983582b.png" width="350" />
 
 And the amplitudes vs frequency, grouped by symmetryfold:
 
-<img alt="V1min_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/226633683-6bf20da3-9bf8-4ac3-8422-e44c51e07c87.png" width="500" /><img alt="V1Max_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/226633674-ce7b1f56-1a13-4283-b80b-3cb1a044974a.png" width="500" />
+<img alt="V1min_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/226633683-6bf20da3-9bf8-4ac3-8422-e44c51e07c87.png" width="350" /><img alt="V1Max_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/226633674-ce7b1f56-1a13-4283-b80b-3cb1a044974a.png" width="350" />
