@@ -22,4 +22,4 @@ Here is an amplitude vs frequency plot, showing boxes from amplitude minimum to 
 
 And the amplitudes vs frequency, grouped by symmetryfold:
 
-<img alt="V1min_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/226633683-6bf20da3-9bf8-4ac3-8422-e44c51e07c87.png" width="350" /><img alt="V1Max_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/226633674-ce7b1f56-1a13-4283-b80b-3cb1a044974a.png" width="350" />
+<img alt="V1min_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/227894988-408af57a-7562-44aa-98d2-47b844241b7c.png" width="350" /><img alt="V1Max_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/227894993-61742193-af75-4049-b925-be98e9c551dd.png" width="350" />
