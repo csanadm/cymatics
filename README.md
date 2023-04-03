@@ -13,6 +13,7 @@ Here is an example plot for the linear fit (lmfit and scikit/sklearn):
 <img alt="fit_residuals" src="https://user-images.githubusercontent.com/38218165/227724923-651c4013-a6cc-49ba-a7bf-9f7509f97b6b.png" width="350" /> <img alt="ML_fit_residuals" src="https://user-images.githubusercontent.com/38218165/227726975-b2a0ca6d-c78b-4fac-83dc-a0323db4f3ef.png" width="350" />
 
 Here is an example output for the SVR code:
+
 <img alt="svr_scikit_RBF" src="https://user-images.githubusercontent.com/38218165/229527232-8bad5c81-ff6b-4b05-8fc7-320430b90482.png" width="350" />
 
 Here is an amplitude vs frequency plot, showing boxes from amplitude minimum to amplitude maximum, at each frequency:
