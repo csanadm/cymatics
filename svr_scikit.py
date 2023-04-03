@@ -11,9 +11,10 @@ df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
 mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination"]
 X = df[mycolumns].to_numpy() #using numpy arrays might make the code faster
 y = df["Symm1"].to_numpy() #using numpy arrays might make the code faster
+indices = np.arange(X.shape[0])
 
 # Split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
+i_train, i_test, X_train, X_test, y_train, y_test = train_test_split(indices, X, y, test_size=0.15, random_state=42)
 
 # Define parameter grid for grid search
 # C: regularization parameter (fitting well vs overfitting)
@@ -176,3 +177,18 @@ plt.tight_layout()
 
 # Save plots
 plt.savefig("svr_scikit.png")
+
+# For RBF, create standalone QC plot
+plt.figure()
+plt.title("ML SVR quality check, RBF kernel")
+plt.ylabel("Symmetry-fold")
+plt.xlabel("Measurement #")
+plt.plot(i_train, y_train,          marker='P', color='C0', mfc='none', linestyle='none', label='Measured value, train sample')
+plt.plot(i_train, y_rbf_pred_train, marker='o', color='C1', mfc='none', linestyle='none', label='Fit result, train sample')
+plt.plot(i_test,  y_test,           marker='P', color='C0',             linestyle='none', label='Measured value, test sample')
+plt.plot(i_test,  y_rbf_pred_test,  marker='o', color='C1',             linestyle='none', label='Fit result, test sample')
+plt.legend(loc='upper left')
+ax = plt.subplot(111)
+box = ax.get_position()
+ax.set_position([box.x0-box.width*0.05,box.y0,box.width*1.15,box.height*1.05])
+plt.savefig("svr_scikit_RBF.png")
