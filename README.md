@@ -7,6 +7,7 @@ In this cymatics project library resonance patterns are analyzed versius various
 - <a href="https://github.com/csanadm/cymatics/blob/main/svr_scikit.py">svr_scikit.py</a>: perform Support Vector Regression with `scikit-learn`.
 - <a href="https://github.com/csanadm/cymatics/blob/main/frequency_plot.py">frequency_plot.py</a>: Plot symmetry-fold vs frequency in various groupings.
 - <a href="https://github.com/csanadm/cymatics/blob/main/amp_plots.py">amp_plots.py</a>: Plot amplitudes vs frequency in various groupings.
+- <a href="https://github.com/csanadm/cymatics/blob/main/resistance_plots.py">resistance_plots.py</a>: Plot symmetryfold vs resistance in various groupings.
 
 Here is an example plot for the linear fit (lmfit and scikit/sklearn):
 
