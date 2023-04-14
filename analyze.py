@@ -17,9 +17,13 @@ def linear_regression_calc(xvector, yvector):
   resvector = yvector - b0 - b1*xvector
   SS_res = np.sum(resvector*resvector)
   rvalue = 1 - SS_res/SS_yy
+  #if(rvalue>0.5):
+  #  print(xvector)
+  #  print(yvector)
   return (b0, b1, rvalue)
 
-df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+#df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
 
 columns = df.columns
 print(columns)
@@ -45,6 +49,7 @@ for field in mycolumns:
       linregrpars = linear_regression_calc(xvector,yvector)
       #print("f = " + str(f) + " Hz -> " + "{:.3f}".format(linregrpars[2]))
       rvalues[ifield][ifreq] = linregrpars[2]
+      if(np.isnan(rvalues[ifield][ifreq])): rvalues[ifield][ifreq] = 0
     ifreq += 1
   plt.legend()
   plt.xlabel(field)
@@ -73,6 +78,17 @@ ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.80,box.height*1.06])
 ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
-plt.savefig("rvalues.png")
+#plt.savefig("rvalues.png")
 
-#plt.show()
+plt.figure()
+plt.title("Average regression r-value versus variable")
+plt.xlabel("")
+plt.ylim(-0.01,0.2)
+averages = np.average(rvalues, axis=0)
+plt.plot(mycolumns, averages, marker=markers[0], linestyle='None')
+plt.axhline(y=0, color='black', linewidth=0.5, linestyle='--')
+plt.xticks(rotation=45, ha='right')
+ax = plt.subplot(111)
+box = ax.get_position()
+ax.set_position([box.x0-box.width*0.04,box.y0+box.height*0.17,box.width*1.15,box.height*0.90])
+plt.savefig("rvalues_averages.png")
