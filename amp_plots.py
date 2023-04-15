@@ -6,7 +6,9 @@ import numpy as np
 
 markers = ["o", "*", "x", "+", "s", "d", "|", "1", "2"] #, "_"] #NOT 10 MARKES AS THERE ARE ALSO 10 COLORS
 
-df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+#df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
+df = df[~df['Symm1'].isna()]
 
 plt.figure()
 plt.xlabel("Frequency [Hz]")

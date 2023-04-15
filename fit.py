@@ -17,7 +17,9 @@ def mychi2fun(params, df, columns):
   return residuals
   
 
-df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+#df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
+df = df[~df['Symm1'].isna()]
 df['V1Min'].fillna(0, inplace=True) # Replace empty V1min values with 0
 df['V1Max'].fillna(df['V1Min'], inplace=True) # Replace empty V1Max values with V1Min
 
@@ -53,7 +55,7 @@ for index, row in df.iterrows():
   chi2 = resid**2
   calcs.append(calc)
   meass.append(meas)
-  #print("%i:   %.2f  ---   %i    (resid = %.2f, chi2 = %.2f)" % (index, calc, meas, resid, chi2))
+  print("%i:   %.2f  ---   %i    (resid = %.2f, chi2 = %.2f)" % (index, calc, meas, resid, chi2))
   
 plt.figure()
 plt.title("Linear regression fit quality check")
@@ -63,6 +65,8 @@ plt.plot(meass, marker='P', linestyle='none', label='Measured value')
 plt.plot(calcs, marker='o', linestyle='none', label='Regression calculation')
 plt.legend(loc='upper left')
 ax = plt.subplot(111)
+ax.set_ylim(-0.7,18)
+plt.yticks(np.arange(0,18,2))
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.05,box.y0,box.width*1.15,box.height*1.05])
 plt.savefig("fit_residuals.png")

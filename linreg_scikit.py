@@ -5,7 +5,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
-df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+#df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
+df = df[~df['Symm1'].isna()]
 df['V1Min'].fillna(0, inplace=True) # Replace empty V1min values with 0
 df['V1Max'].fillna(df['V1Min'], inplace=True) # Replace empty V1Max values with V1Min
 

@@ -30,7 +30,7 @@ print(columns)
 mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination", "V1Min", "V1Max", "V2Min", "V2Max", "V3Min", "V3Max"]
 Ncolumns = len(mycolumns)
 
-frequencies = df["Frequency [Hz]"].unique()
+frequencies = sorted(df["Frequency [Hz]"].unique())
 Nfreqs = len(frequencies)
 
 rvalues = np.zeros([Ncolumns,Nfreqs])
@@ -65,7 +65,7 @@ for field in mycolumns:
   box = ax.get_position()
   ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
   ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-  #plt.savefig(shortfield + ".png")
+  plt.savefig(shortfield + ".png")
   ifield += 1
 
 plt.figure()
@@ -78,7 +78,7 @@ ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.80,box.height*1.06])
 ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
-#plt.savefig("rvalues.png")
+plt.savefig("rvalues.png")
 
 plt.figure()
 plt.title("Average regression r-value versus variable")

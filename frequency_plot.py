@@ -19,7 +19,8 @@ def linear_regression_calc(xvector, yvector):
   rvalue = 1 - SS_res/SS_yy
   return (b0, b1, rvalue)
 
-df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+#df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
 
 plt.figure()
 plt.xlabel("Frequency [Hz]")
@@ -50,7 +51,7 @@ for field in mycolumns:
   plt.xlabel("Frequency [Hz]")
   plt.ylabel("Symmetry-fold")
   print("Working on " + field + "...")
-  uniquevalues = df[field].unique()
+  uniquevalues = sorted(df[field].unique())
   ival = 0
   Nvals = len(uniquevalues)
   print(str(Nvals) + " unique values for " + field)
