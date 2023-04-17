@@ -81,10 +81,10 @@ ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
 plt.savefig("rvalues.png")
 
 plt.figure()
-plt.title("Average regression r-value versus variable")
+plt.title("Average regression r-value for symm-fold versus variable")
 plt.xlabel("")
 plt.ylim(-0.01,0.2)
-averages = np.average(rvalues, axis=0)
+averages = np.average(rvalues, axis=1)
 plt.plot(mycolumns, averages, marker=markers[0], linestyle='None')
 plt.axhline(y=0, color='black', linewidth=0.5, linestyle='--')
 plt.xticks(rotation=45, ha='right')
@@ -92,3 +92,70 @@ ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.04,box.y0+box.height*0.17,box.width*1.15,box.height*0.90])
 plt.savefig("rvalues_averages.png")
+
+symmvals = sorted(df["Symm1"].unique())
+Nsymmvals = len(symmvals)
+
+rvalues2 = np.zeros([Ncolumns,Nsymmvals])
+
+ifield = 0
+for field in mycolumns:
+  plt.figure()
+  isymm = 0
+  print("Working on " + field + " versus symmetry-fold...")
+  for symm in symmvals:
+    df_filtered = df[df["Symm1"]==symm]
+    xvector = df_filtered[field].to_numpy()
+    yvector = df_filtered["Frequency [Hz]"].to_numpy()
+    plt.plot(xvector, yvector, marker=markers[isymm % len(markers)], linestyle='None', label='symm='+str(symm))
+    if(len(xvector[xvector>0])>3):
+      linregrpars = linear_regression_calc(xvector,yvector)
+      #print("f = " + str(f) + " Hz -> " + "{:.3f}".format(linregrpars[2]))
+      rvalues2[ifield][isymm] = linregrpars[2]
+      if(np.isnan(rvalues2[ifield][isymm])): rvalues2[ifield][isymm] = 0
+    isymm += 1
+  plt.legend()
+  plt.xlabel(field)
+  shortfield = field.split(' ')[0]
+  titlefield = shortfield
+  if(len(field.split(' '))>2):
+    titlefield += " " + field.split(' ')[1]
+    shortfield += "_" + field.split(' ')[1]
+    shortfield = shortfield.replace('.','')
+  plt.ylabel("Frequency [Hz]")
+  plt.title("Frequency vs " + titlefield + " and symmetry-fold")
+  ax = plt.subplot(111)
+  box = ax.get_position()
+  ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
+  ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+  plt.savefig(shortfield + "_symmplot.png")
+  ifield += 1
+
+plt.figure()
+plt.title("Regression r-value versus symmetry-fold")
+plt.xlabel("Symmetry-fold")
+plt.ylim(0,1.05)
+for ifield in range(Ncolumns):
+  plt.plot(symmvals, rvalues2[ifield, :], marker=markers[ifield % len(markers)], linestyle='None', label=mycolumns[ifield])
+ax = plt.subplot(111)
+box = ax.get_position()
+ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.80,box.height*1.06])
+ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
+plt.savefig("rvalues_symm.png")
+
+plt.figure()
+plt.title("Average regression r-value for frequency versus variable")
+plt.xlabel("")
+plt.ylim(-0.1,0.1)
+averages2 = np.average(rvalues2, axis=1)
+print(len(mycolumns))
+print(mycolumns)
+print(len(averages2))
+print(averages2)
+plt.plot(mycolumns, averages2, marker=markers[0], linestyle='None')
+plt.axhline(y=0, color='black', linewidth=0.5, linestyle='--')
+plt.xticks(rotation=45, ha='right')
+ax = plt.subplot(111)
+box = ax.get_position()
+ax.set_position([box.x0-box.width*0.04,box.y0+box.height*0.17,box.width*1.15,box.height*0.90])
+plt.savefig("rvalues_symm_averages.png")
