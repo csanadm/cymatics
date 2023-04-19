@@ -6,7 +6,7 @@ In this cymatics project library resonance patterns are analyzed versius various
 - <a href="https://github.com/csanadm/cymatics/blob/main/fit_frequency.py">fit_frequency.py</a>: sama as <a href="https://github.com/csanadm/cymatics/blob/main/fit.py">fit.py</a>, but for frequency prediction.
 - <a href="https://github.com/csanadm/cymatics/blob/main/linreg_scikit.py">linreg_scikit.py</a>: perform ML-based linear regression with `scikit-learn`.
 - <a href="https://github.com/csanadm/cymatics/blob/main/svr_scikit.py">svr_scikit.py</a>: perform Support Vector Regression with `scikit-learn`, to predict symmetry-fold.
-- <a href="https://github.com/csanadm/cymatics/blob/main/svr_scikit_frequency.py">svr_scikit_frequency.py</a>: perform Support Vector Regression with `scikit-learn`, to predict frequency.
+- <a href="https://github.com/csanadm/cymatics/blob/main/svr_scikit_frequency.py">svr_scikit_frequency.py</a>: same as <a href="https://github.com/csanadm/cymatics/blob/main/svr_scikit.py">svr_scikit.py</a>, but for predicting frequency.
 - <a href="https://github.com/csanadm/cymatics/blob/main/frequency_plot.py">frequency_plot.py</a>: Plot symmetry-fold vs frequency in various groupings.
 - <a href="https://github.com/csanadm/cymatics/blob/main/amp_plots.py">amp_plots.py</a>: Plot amplitudes vs frequency in various groupings.
 - <a href="https://github.com/csanadm/cymatics/blob/main/resistance_plots.py">resistance_plots.py</a>: Plot symmetryfold vs resistance in various groupings.
