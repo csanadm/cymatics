@@ -2,7 +2,9 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+#df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
+#df = pd.read_excel("cymatics_ez_water_experiment_ALL.xlsx", sheet_name="Sheet1")
 
 mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination"]
 X = df[mycolumns].to_numpy()
