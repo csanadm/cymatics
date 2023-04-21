@@ -24,6 +24,7 @@ def linear_regression_calc(xvector, yvector):
 
 #df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
 df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
+#df = pd.read_excel("cymatics_ez_water_experiment_ALL.xlsx", sheet_name="Sheet1")
 
 columns = df.columns
 print(columns)
@@ -65,7 +66,7 @@ for field in mycolumns:
   box = ax.get_position()
   ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
   ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-  plt.savefig(shortfield + ".png")
+  #plt.savefig(shortfield + ".png")
   ifield += 1
 
 plt.figure()
@@ -78,12 +79,12 @@ ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.80,box.height*1.06])
 ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
-plt.savefig("rvalues.png")
+#plt.savefig("rvalues.png")
 
 plt.figure()
 plt.title("Average regression r-value for symm-fold versus variable")
 plt.xlabel("")
-plt.ylim(-0.01,0.2)
+#plt.ylim(-0.01,0.2)
 averages = np.average(rvalues, axis=1)
 plt.plot(mycolumns, averages, marker=markers[0], linestyle='None')
 plt.axhline(y=0, color='black', linewidth=0.5, linestyle='--')
@@ -128,7 +129,7 @@ for field in mycolumns:
   box = ax.get_position()
   ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
   ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-  plt.savefig(shortfield + "_symmplot.png")
+  #plt.savefig(shortfield + "_symmplot.png")
   ifield += 1
 
 plt.figure()
@@ -141,12 +142,12 @@ ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.80,box.height*1.06])
 ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
-plt.savefig("rvalues_symm.png")
+#plt.savefig("rvalues_symm.png")
 
 plt.figure()
 plt.title("Average regression r-value for frequency versus variable")
 plt.xlabel("")
-plt.ylim(-0.1,0.1)
+#plt.ylim(-0.1,0.1)
 averages2 = np.average(rvalues2, axis=1)
 print(len(mycolumns))
 print(mycolumns)
