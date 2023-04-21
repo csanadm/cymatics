@@ -66,7 +66,7 @@ for field in mycolumns:
   box = ax.get_position()
   ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
   ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-  #plt.savefig(shortfield + ".png")
+  plt.savefig(shortfield + ".png")
   ifield += 1
 
 plt.figure()
@@ -79,7 +79,7 @@ ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.80,box.height*1.06])
 ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
-#plt.savefig("rvalues.png")
+plt.savefig("rvalues.png")
 
 plt.figure()
 plt.title("Average regression r-value for symm-fold versus variable")
@@ -129,7 +129,7 @@ for field in mycolumns:
   box = ax.get_position()
   ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
   ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-  #plt.savefig(shortfield + "_symmplot.png")
+  plt.savefig(shortfield + "_symmplot.png")
   ifield += 1
 
 plt.figure()
@@ -142,7 +142,7 @@ ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.80,box.height*1.06])
 ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
-#plt.savefig("rvalues_symm.png")
+plt.savefig("rvalues_symm.png")
 
 plt.figure()
 plt.title("Average regression r-value for frequency versus variable")
