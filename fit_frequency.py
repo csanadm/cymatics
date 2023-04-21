@@ -17,8 +17,9 @@ def mychi2fun(params, df, columns):
   return residuals
   
 
-#df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
-df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
+df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+#df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
+#df = pd.read_excel("cymatics_ez_water_experiment_ALL.xlsx", sheet_name="Sheet1")
 df = df[~df['Symm1'].isna()]
 df['V1Min'].fillna(0, inplace=True) # Replace empty V1min values with 0
 df['V1Max'].fillna(df['V1Min'], inplace=True) # Replace empty V1Max values with V1Min
