@@ -72,6 +72,12 @@ print("##################### AMPLITUDE CHANGE ####################")
 
 for ampchange in ["manual", "automated"]:
   df_firstfilter = df[df["Amplitude change"]==ampchange]
+  xvector = df_firstfilter["V1Min"].to_numpy()
+  yvector = df_firstfilter["Symm1"].to_numpy()
+  if(len(xvector[xvector>0])>2): print("Overall r-value, " + ampchange + " amp. change, V1Min vs symm: " + str(linear_regression_calc(xvector,yvector)[2]))
+  xvector = df_firstfilter["V1Max"].to_numpy()
+  yvector = df_firstfilter["Symm1"].to_numpy()
+  if(len(xvector[xvector>0])>2): print("Overall r-value, " + ampchange + " amp. change, V1Max vs symm: " + str(linear_regression_calc(xvector,yvector)[2]))
   for field in ["V1Min", "V1Max"]:
     print("############### " + ampchange + " " + field + " ###############")
     plt.figure()
