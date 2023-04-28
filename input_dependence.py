@@ -33,6 +33,12 @@ Nfreqs = len(frequencies)
 
 for input in ["computer", "analogue"]:
   df_firstfilter = df[df["Audio input"]==input]
+  xvector = df_firstfilter["V1Min"].to_numpy()
+  yvector = df_filtered["Symm1"].to_numpy()
+  if(len(xvector[xvector>0])>2): print("Overall r-value V1Min:" + str(f) + ' Hz -> ' + str(linear_regression_calc(xvector,yvector)[2]))
+  xvector = df_firstfilter["V1Min"].to_numpy()
+  yvector = df_filtered["Symm1"].to_numpy()
+  if(len(xvector[xvector>0])>2): print("Overall r-value V1Max:" + str(f) + ' Hz -> ' + str(linear_regression_calc(xvector,yvector)[2]))
   for field in ["V1Min", "V1Max"]:
     print("############### " + input + " " + field + " ###############")
     plt.figure()
