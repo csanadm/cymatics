@@ -31,14 +31,16 @@ df['V1Max'].fillna(df['V1Min'], inplace=True) # Replace empty V1Max values with 
 frequencies = sorted(df["Frequency [Hz]"].unique())
 Nfreqs = len(frequencies)
 
+print("##################### INPUT TYPE ####################")
+
 for input in ["computer", "analogue"]:
   df_firstfilter = df[df["Audio input"]==input]
   xvector = df_firstfilter["V1Min"].to_numpy()
-  yvector = df_filtered["Symm1"].to_numpy()
-  if(len(xvector[xvector>0])>2): print("Overall r-value V1Min:" + str(f) + ' Hz -> ' + str(linear_regression_calc(xvector,yvector)[2]))
-  xvector = df_firstfilter["V1Min"].to_numpy()
-  yvector = df_filtered["Symm1"].to_numpy()
-  if(len(xvector[xvector>0])>2): print("Overall r-value V1Max:" + str(f) + ' Hz -> ' + str(linear_regression_calc(xvector,yvector)[2]))
+  yvector = df_firstfilter["Symm1"].to_numpy()
+  if(len(xvector[xvector>0])>2): print("Overall r-value, " + input + " input, V1Min vs symm: " + str(linear_regression_calc(xvector,yvector)[2]))
+  xvector = df_firstfilter["V1Max"].to_numpy()
+  yvector = df_firstfilter["Symm1"].to_numpy()
+  if(len(xvector[xvector>0])>2): print("Overall r-value, " + input + " input, V1Max vs symm: " + str(linear_regression_calc(xvector,yvector)[2]))
   for field in ["V1Min", "V1Max"]:
     print("############### " + input + " " + field + " ###############")
     plt.figure()
@@ -65,6 +67,8 @@ for input in ["computer", "analogue"]:
     ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
     ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     #plt.savefig(shortfield + "_" + input + ".png")
+		
+print("##################### AMPLITUDE CHANGE ####################")
 
 for ampchange in ["manual", "automated"]:
   df_firstfilter = df[df["Amplitude change"]==ampchange]
