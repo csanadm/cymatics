@@ -19,8 +19,8 @@ def linear_regression_calc(xvector, yvector):
   rvalue = 1 - SS_res/SS_yy
   return (b0, b1, rvalue)
 
-df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
-#df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
+#df = pd.read_excel("Baseline_ALL_202303.xlsx", sheet_name="ALL")
+df = pd.read_excel("combined_data.xlsx", sheet_name="Munka1")
 #df = pd.read_excel("cymatics_ez_water_experiment_ALL.xlsx", sheet_name="Sheet1")
 
 plt.figure()
@@ -29,10 +29,13 @@ plt.ylabel("Symmetry-fold")
 plt.title("Symmetry-fold vs frequency")
 xvector = df["Frequency [Hz]"]
 yvector = df["Symm1"]
-plt.plot(xvector, yvector, marker=markers[0], linestyle='None', label='')
+xy_pairs = list(zip(xvector, yvector))
+xy_pair_counts = {pair: xy_pairs.count(pair) for pair in xy_pairs}
+marker_sizes = [20*xy_pair_counts[pair] for pair in xy_pairs]
+plt.scatter(xvector, yvector, s=marker_sizes)
 plt.savefig("symmetryfold_vs_frequency.png")
 
-
+exit()
 #columns = df.columns
 #print(columns)
 mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination", "V1Min", "V1Max", "V2Min", "V2Max", "V3Min", "V3Max"]
