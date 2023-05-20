@@ -35,7 +35,6 @@ marker_sizes = [20*xy_pair_counts[pair] for pair in xy_pairs]
 plt.scatter(xvector, yvector, s=marker_sizes)
 plt.savefig("symmetryfold_vs_frequency.png")
 
-exit()
 #columns = df.columns
 #print(columns)
 mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination", "V1Min", "V1Max", "V2Min", "V2Max", "V3Min", "V3Max"]
