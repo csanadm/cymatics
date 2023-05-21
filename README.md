@@ -24,6 +24,8 @@ Here is an example output for the SVR code:
 Here is an amplitude vs frequency plot, showing boxes from amplitude minimum to amplitude maximum, at each frequency:
 
 <img alt="amplitude_vs_frequency" src="https://user-images.githubusercontent.com/38218165/232236888-b2bc9a55-72f8-4d28-adc8-847ee231c6dd.png" width="350" />
+![amplitude_vs_frequency_singlerange](https://github.com/csanadm/cymatics/assets/38218165/0ff7bb74-8240-4347-8c17-1af3752e884a)
+
 
 And the amplitudes vs frequency, grouped by symmetryfold:
 
