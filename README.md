@@ -11,6 +11,7 @@ In this cymatics project library resonance patterns are analyzed versius various
 - <a href="https://github.com/csanadm/cymatics/blob/main/amp_plots.py">amp_plots.py</a>: Plot amplitudes vs frequency in various groupings.
 - <a href="https://github.com/csanadm/cymatics/blob/main/resistance_plots.py">resistance_plots.py</a>: Plot symmetryfold vs resistance in various groupings.
 - <a href="https://github.com/csanadm/cymatics/blob/main/input_dependence.py">input_dependence.py</a>: Analyze dependence on input type (analogue/computer) or method (automatic/manual).
+- <a href="https://github.com/csanadm/cymatics/blob/main/input_dependency_symm_vs_freq_and_amp.py">input_dependency_symm_vs_freq_and_amp.py</a>: Same as <a href="https://github.com/csanadm/cymatics/blob/main/input_dependence.py">input_dependence.py</a> but for symmetry fold versus frequency and amplitude.
 - <a href="https://github.com/csanadm/cymatics/blob/main/pca.py">pca.py</a>: Perform a principal components analysis.
 
 Here is an example plot for the linear fit (two methods: lmfit and scikit/sklearn):
