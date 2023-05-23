@@ -31,4 +31,6 @@ And the amplitudes vs frequency, grouped by symmetryfold:
 
 <img alt="V1min_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/232236981-8fc7a6e6-aeaf-46fe-b244-7036b53c1fcf.png" width="350" /><img alt="V1Max_vs_frequency_by_symm" src="https://user-images.githubusercontent.com/38218165/232236974-7d01fa1c-0bf3-40e2-996c-9867a5a7b63c.png" width="350" />
 
+Finally, symmetry fold versus resistance plots, before and after the cymascope measurement, for the EZ and SZ zones:
+
 <img alt="RBefSZEZ.png" src="https://github.com/csanadm/cymatics/assets/38218165/bfeb0ee0-35c9-4cad-b89b-f4bb1652f3ef" width="350" /><img alt="RSZAftBef.png" src="https://github.com/csanadm/cymatics/assets/38218165/60f98860-ec59-48ec-9e00-a57bc7e3cd6b" width="350" />
