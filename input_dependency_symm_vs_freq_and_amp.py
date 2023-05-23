@@ -37,6 +37,9 @@ for input in ["computer", "analogue"]:
   xvector = df_filtered["Frequency [Hz]"].to_numpy()
   yvector = df_filtered["Symm1"].to_numpy()
   if(len(xvector[xvector>0])>2): print("Overall r-value, " + input + " input, Symm1 vs frequency: " + str(linear_regression_calc(xvector,yvector)[2]))
+  xvector = df_filtered["Frequency [Hz]"].to_numpy()
+  yvector = df_filtered["V1Min"].to_numpy()
+  if(len(xvector[xvector>0])>2): print("Overall r-value, " + input + " input, V1Min vs frequency: " + str(linear_regression_calc(xvector,yvector)[2]))
 
 		
 print("##################### AMPLITUDE CHANGE ####################")
@@ -49,5 +52,8 @@ for ampchange in ["manual", "automated"]:
   xvector = df_filtered["Frequency [Hz]"].to_numpy()
   yvector = df_filtered["Symm1"].to_numpy()
   if(len(xvector[xvector>0])>2): print("Overall r-value, " + ampchange + " amp. change, Symm1 vs frequency: " + str(linear_regression_calc(xvector,yvector)[2]))
+  xvector = df_filtered["Frequency [Hz]"].to_numpy()
+  yvector = df_filtered["V1Min"].to_numpy()
+  if(len(xvector[xvector>0])>2): print("Overall r-value, " + ampchange + " amp. change, V1Min vs frequency: " + str(linear_regression_calc(xvector,yvector)[2]))
   
 
