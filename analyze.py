@@ -44,6 +44,10 @@ print(columns)
 mycolumns = ["Duration [min]", "Humidity [%]", "Air pressure [mb]", "Water temp. [⁰C]", "Air temp. [⁰C]", "Moon illumination", "V1Min", "V1Max", "V2Min", "V2Max", "V3Min", "V3Max"]
 Ncolumns = len(mycolumns)
 
+############################################################
+############### CORR WITH SYMM FOR EACH FREQ ###############
+############################################################
+
 frequencies = sorted(df["Frequency [Hz]"].unique())
 Nfreqs = len(frequencies)
 
@@ -111,6 +115,10 @@ box = ax.get_position()
 ax.set_position([box.x0-box.width*0.04,box.y0+box.height*0.17,box.width*1.15,box.height*0.90])
 #plt.savefig("rvalues_averages" + filter + ".png")
 
+############################################################
+############ CORR WITH FREQ FOR EACH SYMM1 #################
+############################################################
+
 symmvals = sorted(df["Symm1"].unique())
 Nsymmvals = len(symmvals)
 
@@ -177,3 +185,73 @@ ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.04,box.y0+box.height*0.17,box.width*1.15,box.height*0.90])
 #plt.savefig("rvalues_symm_averages" + filter + ".png")
+
+
+
+############################################################
+############ CORR WITH V1MIN FOR EACH FREQ #################
+############################################################
+
+rvalues = np.zeros([Ncolumns,Nfreqs])
+
+ifield = 0
+for field in mycolumns:
+  plt.figure()
+  ifreq = 0
+  print("Working on" + field + " versus V1Min...")
+  for f in frequencies:
+    df_filtered = df[df["Frequency [Hz]"]==f]
+    xvector = df_filtered[field].to_numpy()
+    yvector = df_filtered["V1Min"].to_numpy()
+    plt.plot(xvector, yvector, marker=markers[ifreq % len(markers)], linestyle='None', label='f='+str(f)+' Hz')
+    if(len(xvector[xvector>0])>NUMBER_OF_MIN_POINTS_FOR_REGRESSION):
+      linregrpars = linear_regression_calc(xvector,yvector)
+      #print("f = " + str(f) + " Hz -> " + "{:.3f}".format(linregrpars[2]))
+      rvalues[ifield][ifreq] = linregrpars[2]
+      if(np.isnan(rvalues[ifield][ifreq])): rvalues[ifield][ifreq] = 0
+    ifreq += 1
+  plt.legend()
+  plt.xlabel(field)
+  shortfield = field.split(' ')[0]
+  titlefield = shortfield
+  if(len(field.split(' '))>2):
+    titlefield += " " + field.split(' ')[1]
+    shortfield += "_" + field.split(' ')[1]
+    shortfield = shortfield.replace('.','')
+  plt.ylabel("amplitude")
+  plt.title("amplitude vs " + titlefield + " for each frequency")
+  ax = plt.subplot(111)
+  box = ax.get_position()
+  ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.92,box.height*1.06])
+  ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+  plt.savefig(shortfield + filter + "_V1minplot.png")
+  ifield += 1
+
+plt.figure()
+plt.title("Regression r-value versus amplitude")
+plt.xlabel("Frequency [Hz]")
+plt.ylim(0,1.05)
+for ifield in range(Ncolumns):
+  plt.plot(frequencies, rvalues[ifield, :], marker=markers[ifield % len(markers)], linestyle='None', label=mycolumns[ifield])
+ax = plt.subplot(111)
+box = ax.get_position()
+ax.set_position([box.x0-box.width*0.05,box.y0,box.width*0.80,box.height*1.06])
+ax.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
+plt.savefig("rvalues" + filter + "_V1minplot.png")
+
+plt.figure()
+plt.title("Average regression r-value for symm-fold versus variable")
+plt.xlabel("")
+#plt.ylim(-0.01,0.2)
+averages = np.average(rvalues, axis=1)
+print(len(mycolumns))
+print(mycolumns)
+print(len(averages))
+print(averages)
+plt.plot(mycolumns, averages, marker=markers[0], linestyle='None')
+plt.axhline(y=0, color='black', linewidth=0.5, linestyle='--')
+plt.xticks(rotation=45, ha='right')
+ax = plt.subplot(111)
+box = ax.get_position()
+ax.set_position([box.x0-box.width*0.04,box.y0+box.height*0.17,box.width*1.15,box.height*0.90])
+plt.savefig("rvalues_averages" + filter + "V1minplot.png")
