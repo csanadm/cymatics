@@ -32,7 +32,7 @@ def fit_linear(row,column_code):
   xvector = times
   yvector = row[["R_" + column_code + "_0min [MO]","R_" + column_code + "_5min [MO]","R_" + column_code + "_10min [MO]","R_" + column_code + "_20min [MO]"]]
   b0, b1, rvalue = linear_regression_calc(xvector,yvector)
-  return b1
+  return b1/np.mean(yvector)
   #return rvalue
 
 result_SZ = df.apply(fit_linear,args=('SZ',),axis=1)
@@ -43,7 +43,7 @@ plt.figure()
 plt.xlabel("Measurement #")
 plt.ylabel("Resistance slope")
 #plt.ylabel("Resistance change, r-value")
-plt.ylim([-0.3,0.3])
+plt.ylim([-0.05,0.05])
 plt.xticks(np.arange(len(result_SZ)))
 plt.plot(result_SZ.index,result_SZ.values,marker='o',linestyle='None',label="SZ water")
 plt.plot(result_EZ.index,result_EZ.values,marker='*',linestyle='None',label="EZ water")
@@ -51,5 +51,12 @@ ax = plt.subplot(111)
 box = ax.get_position()
 ax.set_position([box.x0-box.width*0.01,box.y0,box.width*1.07,box.height*1.06])
 ax.legend(loc='center left', bbox_to_anchor=(0.7, 0.9))
-plt.savefig("resistance_slope.png")
-#plt.savefig("resistance_slope_rvalue.png")
+#plt.savefig("resistance_slope.png")
+##plt.savefig("resistance_slope_rvalue.png")
+
+mean_SZ = result_SZ.values.mean()
+var_SZ = result_SZ.values.var()
+mean_EZ = result_EZ.values.mean()
+var_EZ = result_EZ.values.var()
+print(str(mean_SZ) + " +- " + str(var_SZ))
+print(str(mean_EZ) + " +- " + str(var_EZ))
